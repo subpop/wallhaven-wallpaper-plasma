@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+  <kcfgfile name=""/>
+
+  <group name="General">
+    <entry name="Blur" type="bool">
+      <label>Blur background filling</label>
+      <default>false</default>
+    </entry>
+    <entry name="Color" type="Color">
+      <label>Color of the wallpaper</label>
+      <default>#000000</default>
+    </entry>
+    <entry name="FillMode" type="int">
+      <label>Sizing, cropping and positioning of the wallpaper image</label>
+      <default>0</default>
+    </entry>
+    <entry name="APIKey" type="String">
+      <label>Personal API key (required for user collections)</label>
+    </entry>
+    <entry name="Query" type="String">
+      <label>Query parameter to use when fetching images</label>
+      <default>landscape mountains</default>
+    </entry>
+    <entry name="CategoryGeneral" type="bool">
+      <label>Enable general category</label>
+      <default>true</default>
+    </entry>
+    <entry name="CategoryAnime" type="bool">
+      <label>Enable anime category</label>
+      <default>true</default>
+    </entry>
+    <entry name="CategoryPeople" type="bool">
+      <label>Enable people category</label>
+      <default>true</default>
+    </entry>
+    <entry name="PuritySFW" type="bool">
+      <label>Enable SFW purity level</label>
+      <default>true</default>
+    </entry>
+    <entry name="PuritySketchy" type="bool">
+      <label>Enable sketchy purity level</label>
+      <default>false</default>
+    </entry>
+    <entry name="PurityNSFW" type="bool">
+      <label>Enable NSFW purity level</label>
+      <default>false</default>
+    </entry>
+    <entry name="Sorting" type="string">
+      <label>Sort by date added, relevance, random, views, favorites or top list</label>
+      <default>date_added</default>
+    </entry>
+    <entry name="Top Range" type="string">
+      <label>Range limit when sorting by top list</label>
+      <default>1M</default>
+    </entry>
+    <entry name="Search Color" type="string">
+      <label>Color to filter the search results</label>
+      <default></default>
+    </entry>
+    <entry name="WallpaperDelay" type="int">
+      <label>How much time in minutes between wallpaper change.</label>
+      <default>60</default>
+    </entry>
+    <entry name="RefetchSignal" type="bool">
+      <label>Need this to enable a refetch button in the config page that bypasses the apply button.</label>
+      <default>false</default>
+    </entry>
+  </group>
+
+</kcfg>
