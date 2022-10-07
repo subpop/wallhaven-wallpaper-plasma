@@ -28,6 +28,14 @@ QQC2.StackView {
 
     readonly property size sourceSize: Qt.size(root.width * Screen.devicePixelRatio, root.height * Screen.devicePixelRatio)
 
+    function greatestCommonDenominator(a, b) {
+        return (b == 0) ? a : greatestCommonDenominator(b, a%b);
+    }
+    readonly property string aspectRatio: {
+        var d = greatestCommonDenominator(root.width, root.height)
+        return root.width / d + "x" + root.height / d;
+    }
+
     property Item pendingImage
 
     onCurrentUrlChanged: Qt.callLater(loadImage);
@@ -133,6 +141,8 @@ QQC2.StackView {
             // if (wallpaper.configuration.SearchColor) {
             //     url += `color=${wallpaper.configuration.SearchColor}&`
             // }
+
+            url += `ratios=${encodeURIComponent(root.aspectRatio)}&`
 
             url += `q=${encodeURIComponent(wallpaper.configuration.Query)}`
             console.error('using url: ' + url);
