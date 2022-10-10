@@ -260,7 +260,7 @@ ColumnLayout {
         }
 
         RowLayout {
-            Kirigami.FormData.label: i18n("Refresh Interval (minutes):")
+            Kirigami.FormData.label: i18n("Change every:")
             SpinBox {
                 id: delaySpinBox
                 value: cfg_WallpaperDelay
@@ -269,6 +269,14 @@ ColumnLayout {
                 from: 1
                 to: 50000
                 editable: true
+
+                textFromValue: function(value, locale) {
+                    return value + " minutes";
+                }
+
+                valueFromText: function(text, locale) {
+                    return text.replace(/ minutes/, '');
+                }
             }
 
             Button {
