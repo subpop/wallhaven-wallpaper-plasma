@@ -44,10 +44,8 @@ QQC2.StackView {
     onBlurChanged: Qt.callLater(loadImage);
     onRefreshSignalChanged: refreshTimer.restart();
     onSortingChanged: {
-        if (sorting != "random") {
             currentPage = 1;
             currentIndex = 0;
-        }
     }
 
     Component.onCompleted: refreshImage();
@@ -128,9 +126,7 @@ QQC2.StackView {
 
             url += `sorting=${wallpaper.configuration.Sorting}&`
 
-            if (wallpaper.configuration.Sorting != "random") {
-                url += `page=${root.currentPage}&`
-            }
+            url += `page=${root.currentPage}&`
 
             url += `atleast=${root.sourceSize.width}x${root.sourceSize.height}&`
 
@@ -175,18 +171,14 @@ QQC2.StackView {
     function pickImage(d) {
         if (d.data.length > 0) {
             var index = 0;
-            if (wallpaper.configuration.Sorting != "random") {
-                index = root.currentIndex;
-                if (index > 24) {
-                    root.currentPage += 1;
-                    root.currentIndex = 0;
-                    refreshTimer.restart();
-                    return;
-                }
-                root.currentIndex += 1;
-            } else {
-                index = Math.floor(Math.random() * d.data.length);
+            index = root.currentIndex;
+            if (index > 24) {
+                root.currentPage += 1;
+                root.currentIndex = 0;
+                refreshTimer.restart();
+                return;
             }
+            root.currentIndex += 1;
             const imageObj = d.data[index] || {};
             root.currentUrl = imageObj.path;
             root.currentPage = d.meta.current_page;
