@@ -142,7 +142,19 @@ QQC2.StackView {
             //     url += `color=${wallpaper.configuration.SearchColor}&`
             // }
 
-            url += `ratios=${encodeURIComponent(root.aspectRatio)}&`
+            if (!wallpaper.configuration.RatioAny) {
+                var ratios = []
+                if (wallpaper.configuration.Ratio169) {
+                    ratios.push("16x9");
+                }
+                if (wallpaper.configuration.Ratio1610) {
+                    ratios.push("16x10");
+                }
+                if (wallpaper.configuration.RatioCustom) {
+                    ratios.push(wallpaper.configuration.RatioCustomValue);
+                }
+                url += `ratios=${ratios.join(',')}&`
+            }
 
             url += `q=${encodeURIComponent(wallpaper.configuration.Query)}`
             console.error('using url: ' + url);
