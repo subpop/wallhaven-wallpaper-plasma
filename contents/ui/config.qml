@@ -40,6 +40,12 @@ ColumnLayout {
     property bool cfg_CategoryAnime
     property bool cfg_CategoryPeople
 
+    property bool cfg_RatioAny
+    property bool cfg_Ratio169
+    property bool cfg_Ratio1610
+    property bool cfg_RatioCustom
+    property string cfg_RatioCustomValue
+
     property bool cfg_PuritySFW
     property bool cfg_PuritySketchy
     property bool cfg_PurityNSFW
@@ -133,6 +139,55 @@ ColumnLayout {
             KQuickControls.ColorButton {
                 id: colorButton
                 dialogTitle: i18nd("plasma_wallpaper_org.kde.image", "Select Background Color")
+            }
+        }
+
+        GroupBox {
+            id: aspectRatioInput
+            Kirigami.FormData.label: i18n("Aspect ratio:")
+            RowLayout {
+                anchors.fill: parent
+                CheckBox {
+                    text: i18n("Any")
+                    checked: cfg_RatioAny
+                    onToggled: {
+                        cfg_RatioAny = checked;
+                    }
+                }
+                CheckBox {
+                    text: "16x9"
+                    checked: cfg_Ratio169
+                    enabled: !cfg_RatioAny
+                    onToggled: {
+                        cfg_Ratio169 = checked;
+                    }
+                }
+                CheckBox {
+                    text: "16x10"
+                    checked: cfg_Ratio1610
+                    enabled: !cfg_RatioAny
+                    onToggled: {
+                        cfg_Ratio1610 = checked;
+                    }
+                }
+                CheckBox {
+                    text: i18n("Custom")
+                    checked: cfg_RatioCustom
+                    enabled: !cfg_RatioAny
+                    onToggled: {
+                        cfg_RatioCustom = checked;
+                    }
+                }
+                TextField {
+                    id: customRatioInput
+                    text: cfg_RatioCustomValue
+                    visible: cfg_RatioCustom
+                    enabled: !cfg_RatioAny
+                    onTextChanged: {
+                        cfg_RatioCustomValue = text;
+                    }
+                }
+
             }
         }
 
