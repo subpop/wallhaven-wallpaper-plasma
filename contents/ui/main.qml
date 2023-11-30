@@ -144,6 +144,10 @@ QQC2.StackView {
 
             url += `ratios=${encodeURIComponent(root.aspectRatio)}&`
 
+            if (wallpaper.configuration.RandomSeed) {
+                url += `seed=${generateSeed()}`
+            }
+
             url += `q=${encodeURIComponent(wallpaper.configuration.Query)}`
             console.error('using url: ' + url);
 
@@ -237,6 +241,18 @@ QQC2.StackView {
         wallpaper.loading = false;
 
         pendingImage = null;
+    }
+
+    function generateSeed() {
+        const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const generatedCharacters = [];
+
+        for (let i = 0; i < 6; i++) {
+            const randomIndex = Math.floor(Math.random() * characters.length);
+            generatedCharacters.push(characters.charAt(randomIndex));
+        }
+
+        return generatedCharacters.join('');
     }
 
     replaceEnter: Transition {
