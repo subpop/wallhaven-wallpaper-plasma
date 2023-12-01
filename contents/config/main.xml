@@ -69,6 +69,10 @@
       <label>Need this to enable a refetch button in the config page that bypasses the apply button.</label>
       <default>false</default>
     </entry>
+    <entry name="Random Seed" type="bool">
+      <label>Enable random seed.</label>
+      <default>false</default>
+    </entry>
   </group>
 
 </kcfg>

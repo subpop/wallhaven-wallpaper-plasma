@@ -50,6 +50,8 @@ ColumnLayout {
 
     property string cfg_SearchColor
 
+    property bool cfg_RandomSeed
+
     Image {
         id: currentWallpaper
         source: wallpaper.configuration.currentWallpaperThumbnail
@@ -285,6 +287,17 @@ ColumnLayout {
                 ToolTip.visible: top
                 onClicked: {
                     wallpaper.configuration.RefetchSignal = !wallpaper.configuration.RefetchSignal;
+                }
+            }
+        }
+
+        RowLayout {
+            Kirigami.FormData.label: i18n("Random seed")
+            CheckBox {
+                text: i18n("Enable")
+                checked: cfg_RandomSeed
+                onToggled: {
+                    cfg_RandomSeed = checked;
                 }
             }
         }
