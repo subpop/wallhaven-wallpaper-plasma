@@ -145,7 +145,7 @@ QQC2.StackView {
             url += `ratios=${encodeURIComponent(root.aspectRatio)}&`
 
             if (wallpaper.configuration.RandomSeed) {
-                url += `seed=${generateSeed()}`
+                url += `seed=${generateSeed()}&`
             }
 
             url += `q=${encodeURIComponent(wallpaper.configuration.Query)}`
